@@ -1,0 +1,4 @@
+aiohttp==3.13.2
+pyotp==2.9.0
+selenium==4.39.0
+py2n @ git+https://github.com/bergmann-it/py2n.git@main

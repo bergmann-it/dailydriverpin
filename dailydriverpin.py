@@ -5,7 +5,7 @@ from py2n import Py2NDevice, Py2NConnectionData
 import aiohttp
 import asyncio
 
-from settings import door_totp_secret, amazon_mail, amazon_pwd, amazon_totp_secret, klingel_host, klingel_account, klingel_pwd, klingel_users
+from settings import *
 async def main():
   door_totp = pyotp.TOTP(door_totp_secret)
 
@@ -22,6 +22,7 @@ async def main():
         if user['name'] in klingel_users:
             update.append({'uuid': user['uuid'], 'access': { 'code': ["","","", new_door_otp] }})
     updated_users = await device.update_dir(update)
+    await aiohttp_session.put(hass_webhook_uri,json={'value':new_door_otp})
 
   update_amazon_pin(amazon_mail, amazon_pwd, amazon_totp_secret, new_door_otp)
 

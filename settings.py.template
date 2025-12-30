@@ -8,3 +8,5 @@ klingel_host = 'klingel.example.com'
 klingel_account = 'dailydriver'
 klingel_pwd = 'SECRETPWD'
 klingel_users = ['Amazon']
+
+hass_webhook_uri = 'SecretWebhookURI'

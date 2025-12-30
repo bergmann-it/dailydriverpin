@@ -10,7 +10,8 @@ def update_amazon_pin(mail,pwd,totp_secret,pin):
 
     options = Options()
     options.add_argument('-headless')
-    driver = webdriver.Firefox(options=options)
+    service = webdriver.FirefoxService(executable_path='/usr/local/bin/geckodriver')
+    driver = webdriver.Firefox(options=options,service=service)
 
 #call page
     driver.get("https://www.amazon.de/a/addresses?ref_=ya_d_c_addr")

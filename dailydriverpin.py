@@ -20,7 +20,7 @@ async def main():
     update = []
     for user in users:
         if user['name'] in klingel_users:
-            update.append({'uuid': user['uuid'], 'access': { 'pin': new_door_otp }})
+            update.append({'uuid': user['uuid'], 'access': { 'code': ["","","", new_door_otp] }})
     updated_users = await device.update_dir(update)
 
   update_amazon_pin(amazon_mail, amazon_pwd, amazon_totp_secret, new_door_otp)

@@ -4,13 +4,17 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 import pyotp
 import time
+import os.path
 
 def update_amazon_pin(mail,pwd,totp_secret,pin):
     amazon_totp = pyotp.TOTP(totp_secret)
 
     options = Options()
     options.add_argument('-headless')
-    service = webdriver.FirefoxService(executable_path='/usr/local/bin/geckodriver')
+    servicepath='/usr/local/bin/geckodriver'
+    service=None
+    if os.path.exists(servicepath):
+      service = webdriver.FirefoxService(executable_path=servicepath)
     driver = webdriver.Firefox(options=options,service=service)
 
 #call page

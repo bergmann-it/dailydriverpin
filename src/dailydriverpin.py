@@ -22,16 +22,16 @@ def read_settings():
   for key in settings_template:
     env_key = key.upper()
     if env_key in os.environ:
-        settings[key] = os.environ[env_key]
+      settings[key] = os.environ[env_key]
     elif key in file_settings:
-        settings[key] = file_settings[key]
+      settings[key] = file_settings[key]
     else:
-        print("Setting "+key+" missing.")
-        settings_complete=False
+      print("Setting "+key+" missing.")
+      settings_complete=False
 
   if not settings_complete:
-      print("Settings incomplete. Aborting")
-      sys.exit(1)
+    print("Settings incomplete. Aborting")
+    sys.exit(1)
 
   return settings
 
